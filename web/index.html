@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IBM 5100 Interactive 3D Model</title>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4/dist/model-viewer.min.js"></script>
+  <style>
+    body{margin:0;background:#11151c;color:#e7edf5;font:15px system-ui;text-align:center}
+    h1{margin:18px 0 4px}.sub{color:#aeb9c8}
+    .viewer{height:650px;max-width:1200px;margin:18px auto;background:radial-gradient(circle,#293342,#0e1116);border:1px solid #46566c;border-radius:12px;overflow:hidden}
+    model-viewer{width:100%;height:100%}.controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px}
+    button{padding:9px 13px;border:1px solid #46566c;border-radius:6px;background:#202b3a;color:#ecf3ff;cursor:pointer}
+    button:hover{background:#2f4e73}button.active{background:#1e5799;border-color:#72b8ff}
+    .help{color:#aeb9c8;margin:8px auto;max-width:1100px}.help code{color:#b8d7ff}
+    .gallery{max-width:1200px;margin:18px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .card{background:#202733;border:1px solid #46566c;border-radius:8px;overflow:hidden}.card img{display:block;width:100%}
+    .card h3{margin:10px 10px 3px}.card p{margin:0 10px 12px;color:#aeb9c8}.downloads{margin:18px}.downloads a{margin:0 8px;color:#b8d7ff}
+  </style>
+</head>
+<body>
+  <h1>IBM 5100 Portable Computer</h1>
+  <p class="sub">X_eTaL → Blender · inserted DC300 tape · optional Model C BASIC/APL selector</p>
+  <div class="viewer"><model-viewer id="mv" src="ibm5100.glb" poster="overview.png" alt="IBM 5100 3D model" camera-controls auto-rotate camera-orbit="0deg 65deg 0.82m" camera-target="0m 0.94m 0m" min-camera-orbit="auto auto 0.35m" max-camera-orbit="auto auto 3m" shadow-intensity="1.2" environment-image="neutral" exposure="1.05"></model-viewer></div>
+  <div class="controls">
+    <button data-view="0deg 65deg 0.82m" data-target="0m 0.94m 0m">Overview</button><button data-view="0deg 60deg 0.72m" data-target="0m 0.94m 0.04m">Operator</button><button data-view="0deg 75deg 0.62m" data-target="0m 0.98m 0.06m">Front panel</button><button data-view="0deg 50deg 0.60m" data-target="0m 0.91m 0.12m">Keyboard</button><button data-view="25deg 58deg 0.62m" data-target="0.12m 0.98m 0.08m">Tape drive</button><button id="zoom-in">Zoom in</button><button id="zoom-out">Zoom out</button><button id="camera-up">Camera up</button><button id="camera-down">Camera down</button><button id="rotate">Pause rotation</button><button id="reset">Reset</button>
+  </div>
+  <p class="help"><code>W/S</code> zoom · <code>A/D</code> or <code>←/→</code> orbit · <code>↑/↓</code> camera up/down · <code>I/K</code> pan · <code>Space</code> pause/resume rotation · <code>R</code> reset</p>
+  <p class="help"><code>Blender (x,y,z) → model-viewer (x,z,−y)</code>; authored front is Blender −Y.</p>
+  <div class="downloads"><a href="ibm5100.glb" download>GLB</a><a href="ibm5100.blend" download>BLEND</a><a href="ibm5100.obj" download>OBJ</a></div>
+  <div class="gallery">
+    <div class="card"><img src="overview.png"><h3>White-room overview</h3><p>IBM 5100 on a plain four-legged table.</p></div>
+    <div class="card"><img src="operator.png"><h3>Operator view</h3><p>CRT, controls, keyboard, and numeric keypad.</p></div>
+    <div class="card"><img src="front-panel.png"><h3>Front panel</h3><p>CRT, indicators, and Model C selector.</p></div>
+    <div class="card"><img src="keyboard.png"><h3>Keyboard</h3><p>Named keys and command area.</p></div>
+    <div class="card"><img src="tape.png"><h3>Inserted tape</h3><p>DC300 cartridge seated in the internal drive.</p></div>
+  </div>
+  <script>
+    const mv=document.getElementById('mv');
+    // Blender is Z-up; glTF/model-viewer is Y-up. Blender (x,y,z) maps to
+    // model-viewer (x,z,-y), so height belongs in cameraTarget's second value.
+    const defaultOrbit='0deg 65deg 0.82m';
+    const defaultTarget='0m 0.94m 0m';
+    let rotating=true;
+    function setView(orbit,target){setAutoRotate(false);mv.cameraOrbit=orbit;mv.cameraTarget=target;if(mv.jumpCameraToGoal)mv.jumpCameraToGoal()}
+    function targetVector(){return mv.getCameraTarget?mv.getCameraTarget():{x:0,y:0,z:0.98}}
+    function moveCameraTarget(dy){const t=targetVector();mv.cameraTarget=`${t.x}m ${t.y+dy}m ${t.z}m`;setAutoRotate(false);if(mv.jumpCameraToGoal)mv.jumpCameraToGoal()}
+    function orbit(deltaTheta){const o=mv.getCameraOrbit();setView(`${o.theta+deltaTheta}rad ${o.phi}rad ${o.radius}m`)}
+    document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view,b.dataset.target));
+    document.getElementById('zoom-in').onclick=()=>{const o=mv.getCameraOrbit();setAutoRotate(false);mv.cameraOrbit=`${o.theta}rad ${o.phi}rad ${Math.max(0.45,o.radius*0.78)}m`};
+    document.getElementById('zoom-out').onclick=()=>{const o=mv.getCameraOrbit();setAutoRotate(false);mv.cameraOrbit=`${o.theta}rad ${o.phi}rad ${Math.min(5,o.radius*1.28)}m`};
+    document.getElementById('camera-up').onclick=()=>moveCameraTarget(0.10);
+    document.getElementById('camera-down').onclick=()=>moveCameraTarget(-0.10);
+    function setAutoRotate(on){rotating=on;if(on){mv.setAttribute('auto-rotate','');mv.autoRotate=true;mv.autoRotateDelay=0}else{mv.removeAttribute('auto-rotate');mv.autoRotate=false}document.getElementById('rotate').textContent=on?'Pause rotation':'Resume rotation'}
+    document.getElementById('rotate').onclick=()=>setAutoRotate(!rotating);
+    document.getElementById('reset').onclick=()=>{mv.cameraOrbit=defaultOrbit;mv.cameraTarget=defaultTarget;setAutoRotate(true);if(mv.jumpCameraToGoal)mv.jumpCameraToGoal()};
+    window.onkeydown=e=>{const k=e.key.toLowerCase();let handled=true;if(k==='r')document.getElementById('reset').click();else if(k==='i'||e.key==='ArrowUp')moveCameraTarget(0.08);else if(k==='k'||e.key==='ArrowDown')moveCameraTarget(-0.08);else if(k==='a'||e.key==='ArrowLeft')orbit(-0.12);else if(k==='d'||e.key==='ArrowRight')orbit(0.12);else if(k==='w'){document.getElementById('zoom-in').click()}else if(k==='s'){document.getElementById('zoom-out').click()}else if(e.code==='Space')setAutoRotate(!rotating);else handled=false;if(handled)e.preventDefault()};
+  </script>
+</body>
+</html>

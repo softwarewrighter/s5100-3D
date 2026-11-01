@@ -1,0 +1,242 @@
+## IBM 5100 Portable Computer model, X_eTaL -> Blender.
+
+"bp:" u_se< "Bpy"
+"co:" u_se< "Ibm5100Colors"
+
+flat := 0.0 0.0 0.0
+
+l:c_omputer := { z ->
+  t := (bp:p_iece "ibm5100")
+  # 5110-derived molded enclosure profile, retained in IBM 5100 tan. The
+  # front leans forward into the keyboard lip; the rear body is taller and
+  # deeper, rather than a rectangular Compaq-like box.
+  bodyV := 8 3 r_eshape -0.222 -0.335 0.855  0.222 -0.335 0.855  0.222 0.305 0.875  -0.222 0.305 0.875  -0.222 -0.275 1.115  0.222 -0.275 1.115  0.222 0.285 1.145  -0.222 0.285 1.145
+  bodyF := 6 4 r_eshape 0 1 2 3  0 4 5 1  1 5 6 2  2 6 7 3  3 7 4 0  4 7 6 5
+  t := t c_at (("5110 shared tapered outer enclosure", 0.0 0.0 0.0, bodyV, bodyF, flat, co:beige, 0.0) bp:m_esh 0)
+  t := t c_at (("5100 lower base and front lip", 0.0 -0.020 0.855, 0.470 0.650 0.050, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("5100 front apron", 0.0 -0.335 0.910, 0.440 0.025 0.120, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  # Closed molded keyboard well: deck, front lip, side cheeks, rear wall,
+  # and bottom. The keycaps sit inside this enclosure, not in free space.
+  t := t c_at (("keyboard well bottom", 0.0 -0.245 0.890, 0.410 0.245 0.025, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("keyboard well sloped deck", 0.0 -0.245 0.950, 0.405 0.235 0.018, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("keyboard well front lip", 0.0 -0.375 0.920, 0.430 0.028 0.070, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("keyboard well left cheek", -0.207 -0.245 0.945, 0.028 0.245 0.100, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("keyboard well right cheek", 0.207 -0.245 0.945, 0.028 0.245 0.100, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("keyboard well rear wall", 0.0 -0.115 1.005, 0.430 0.028 0.085, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  # Side ventilation slots visible on the shared 5100/5110 enclosure.
+  t := t c_at (("right vent 1", 0.226 0.115 0.985, 0.006 0.012 0.090, 0.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("right vent 2", 0.226 0.140 0.985, 0.006 0.012 0.090, 0.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("right vent 3", 0.226 0.165 0.985, 0.006 0.012 0.090, 0.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("right vent 4", 0.226 0.190 0.985, 0.006 0.012 0.090, 0.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("operator console fascia", 0.0 -0.180 0.945, 0.425 0.205 0.018, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("upper control fascia", 0.035 -0.315 1.145, 0.245 0.018 0.070, 0.0 0.0 0.0, co:beige, 0.0) bp:b_ox 0)
+  # CRT bezel and green monochrome screen on the left.
+  t := t c_at (("CRT bezel", -0.115 -0.316 1.082, 0.178 0.020 0.112, flat, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("CRT glass", -0.115 -0.329 1.082, 0.148 0.008 0.084, flat, co:screen, 0.35) bp:b_ox 0)
+  t := t c_at (("CRT phosphor line 1", -0.115 -0.335 1.112, 0.130 0.003 0.003, flat, co:phosphor, 0.55) bp:b_ox 0)
+  t := t c_at (("CRT phosphor line 2", -0.115 -0.335 1.098, 0.105 0.003 0.003, flat, co:phosphor, 0.55) bp:b_ox 0)
+  t := t c_at (("CRT phosphor line 3", -0.115 -0.335 1.084, 0.116 0.003 0.003, flat, co:phosphor, 0.55) bp:b_ox 0)
+  t := t c_at (("CRT phosphor line 4", -0.115 -0.335 1.070, 0.094 0.003 0.003, flat, co:phosphor, 0.55) bp:b_ox 0)
+  # Broad horizontal internal cartridge tape slot with cartridge seated.
+  t := t c_at (("tape drive bezel", 0.120 -0.318 1.040, 0.175 0.020 0.080, flat, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("tape aperture", 0.120 -0.332 1.040, 0.148 0.008 0.043, flat, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("DC300 cartridge", 0.120 -0.340 1.040, 0.130 0.009 0.025, flat, co:tape, 0.0) bp:b_ox 0)
+  t := t c_at (("DC300 label", 0.120 -0.346 1.040, 0.095 0.003 0.012, flat, co:tapeLabel, 0.0) bp:b_ox 0)
+  t := t c_at (("tape hub", 0.120 -0.350 1.040, 0.014 0.004 0.014, flat, co:metal, 0.0) bp:c_ylinder 0)
+  t := t c_at (("key Q", -0.142 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key W", -0.108 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key E", -0.074 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key R", -0.040 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key T", -0.006 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key Y", 0.028 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key U", 0.062 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key I", 0.096 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key O", 0.130 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key P", 0.164 -0.325 0.961, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key A", -0.142 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key S", -0.108 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key D", -0.074 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key F", -0.040 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key G", -0.006 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key H", 0.028 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key J", 0.062 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key K", 0.096 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key L", 0.130 -0.280 0.970, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key Z", -0.108 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key X", -0.074 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key C", -0.040 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key V", -0.006 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key B", 0.028 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key N", 0.062 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("key M", 0.096 -0.235 0.979, 0.014 0.024 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  # Keycaps lifted toward the operator so they remain visible above the tray lip.
+  t := t c_at (("front key 1", -0.140 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 2", -0.105 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 3", -0.070 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 4", -0.035 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 5", 0.000 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 6", 0.035 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 7", 0.070 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 8", 0.105 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front key 9", 0.140 -0.385 0.970, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 1", -0.140 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 2", -0.105 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 3", -0.070 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 4", -0.035 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 5", 0.000 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 6", 0.035 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 7", 0.070 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("middle key 8", 0.105 -0.345 0.982, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 1", -0.120 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 2", -0.085 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 3", -0.050 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 4", -0.015 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 5", 0.020 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 6", 0.055 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 7", 0.090 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("rear key 8", 0.125 -0.305 0.994, 0.016 0.026 0.012, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric keypad face", 0.178 -0.340 0.985, 0.090 0.135 0.012, -12.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 1", 0.155 -0.385 1.000, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 2", 0.180 -0.385 1.000, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 3", 0.205 -0.385 1.000, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 4", 0.155 -0.350 0.993, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 5", 0.180 -0.350 0.993, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric pad 6", 0.205 -0.350 0.993, 0.018 0.022 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("front function left", -0.165 -0.385 1.000, 0.030 0.026 0.012, -12.0 0.0 0.0, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("front function right", 0.165 -0.385 1.000, 0.030 0.026 0.012, -12.0 0.0 0.0, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("function keys", -0.155 -0.205 0.987, 0.075 0.025 0.012, -12.0 0.0 0.0, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("function keys right", 0.155 -0.205 0.987, 0.075 0.025 0.012, -12.0 0.0 0.0, co:charcoal, 0.0) bp:b_ox 0)
+  t := t c_at (("space bar", 0.0 -0.345 0.925, 0.160 0.028 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric keypad surround", 0.150 -0.255 0.970, 0.105 0.145 0.014, -12.0 0.0 0.0, co:beigeDark, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 7", 0.120 -0.220 0.987, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 8", 0.150 -0.220 0.987, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 9", 0.180 -0.220 0.987, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 4", 0.120 -0.250 0.981, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 5", 0.150 -0.250 0.981, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 6", 0.180 -0.250 0.981, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 1", 0.120 -0.280 0.975, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 2", 0.150 -0.280 0.975, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("numeric key 3", 0.180 -0.280 0.975, 0.020 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  # Front controls and Model C selector, explicitly named for interaction.
+  t := t c_at (("POWER switch", -0.214 -0.322 1.015, 0.016 0.012 0.034, 0.0 0.0 0.0, co:red, 0.0) bp:b_ox 0)
+  t := t c_at (("PROCESS CHECK lamp", -0.183 -0.322 1.015, 0.018 0.010 0.018, 0.0 0.0 0.0, co:amber, 0.7) bp:b_ox 0)
+  t := t c_at (("BASIC APL selector Model C", -0.010 -0.322 1.165, 0.070 0.010 0.018, 0.0 0.0 0.0, co:metal, 0.0) bp:b_ox 0)
+  t := t c_at (("REVERSE DISPLAY switch", 0.070 -0.322 1.165, 0.016 0.010 0.028, 0.0 0.0 0.0, co:metal, 0.0) bp:b_ox 0)
+  t := t c_at (("RESTART switch", 0.103 -0.322 1.165, 0.016 0.010 0.028, 0.0 0.0 0.0, co:metal, 0.0) bp:b_ox 0)
+  t := t c_at (("EXECUTE key", -0.178 -0.348 0.925, 0.030 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t := t c_at (("READ key", -0.135 -0.348 0.925, 0.030 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+  t c_at (("RESET key", -0.092 -0.348 0.925, 0.030 0.025 0.010, -12.0 0.0 0.0, co:beigeLight, 0.0) bp:b_ox 0)
+}
+
+l:r_oom := { z ->
+  t := (bp:p_iece "presentation")
+  t := t c_at (("white floor", 0.0 0.0 0.0, 2.8 2.5 0.04, flat, co:floor, 0.0) bp:b_ox 0)
+  t := t c_at (("white back wall", 0.0 1.2 1.25, 2.8 0.04 2.5, flat, co:wall, 0.0) bp:b_ox 0)
+  # plain four-legged table
+  t := t c_at (("table top", 0.0 0.0 0.82, 1.10 0.75 0.065, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg front left", -0.46 -0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg front right", 0.46 -0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg rear left", -0.46 0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t c_at (("table leg rear right", 0.46 0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
+}
+
+l:pbr := "for m in bpy.data.materials:\n    if not m.use_nodes: continue\n    p = m.node_tree.nodes.get('Principled BSDF')\n    if not p: continue\n    n = m.name.lower()\n    if 'screen' in n or 'phosphor' in n: p.inputs['Roughness'].default_value = 0.18\n    elif 'metal' in n or 'hub' in n or 'switch' in n: p.inputs['Metallic'].default_value = 0.80; p.inputs['Roughness'].default_value = 0.22\n    elif 'table' in n: p.inputs['Roughness'].default_value = 0.42\n    elif 'beige' in n or 'fascia' in n or 'keyboard' in n: p.inputs['Roughness'].default_value = 0.38\n\nfor o in list(bpy.context.scene.objects):\n    if o.type != 'MESH': continue\n    b = o.modifiers.new('molded edge bevel', 'BEVEL')\n    b.width = 0.0035 if 'key' not in o.name.lower() else 0.0015\n    b.segments = 3\n    b.limit_method = 'ANGLE'\n"
+
+l:cameras := "def add_cam(name, loc, aim, lens=48):\n    c = bpy.data.objects.new(name, bpy.data.cameras.new(name)); c.data.lens = lens; c.location = loc; scene.collection.objects.link(c)\n    target = bpy.data.objects.new(name + '_target', None); target.location = aim; scene.collection.objects.link(target)\n    trk = c.constraints.new('TRACK_TO'); trk.target = target; trk.track_axis = 'TRACK_NEGATIVE_Z'; trk.up_axis = 'UP_Y'\n    return c\n\ncam_overview = add_cam('cam_overview', (1.25, -1.45, 1.35), (0.0, 0.0, 0.93), 48)\ncam_operator = add_cam('cam_operator', (0.0, -0.95, 1.15), (0.0, -0.25, 0.98), 42)\ncam_front = add_cam('cam_front_panel', (0.0, -0.95, 1.13), (0.0, -0.32, 1.08), 62)\ncam_keyboard = add_cam('cam_keyboard', (0.0, -0.72, 1.02), (0.0, -0.31, 0.94), 58)\ncam_tape = add_cam('cam_tape', (0.62, -0.75, 1.12), (0.12, -0.33, 1.08), 58)\n\ndef render_view(cam, filename):\n    scene.camera = cam; scene.render.image_settings.media_type = 'IMAGE'; scene.render.image_settings.file_format = 'PNG'; scene.render.filepath = os.path.join(out, filename); bpy.ops.render.render(write_still=True)\n\nrender_view(cam_overview, 'overview.png')\nrender_view(cam_operator, 'operator.png')\nrender_view(cam_front, 'front-panel.png')\nrender_view(cam_keyboard, 'keyboard.png')\nrender_view(cam_tape, 'tape.png')\n"
+
+l:importRef := "path = os.path.join(os.getcwd(), 'references/trellis5100-reference.glb')\nbpy.ops.import_scene.gltf(filepath=path)\ncore = bpy.context.selected_objects[0]\ncore.name = 'IBM 5100 continuous reference shell'\ncore.scale = (0.445 / 0.590, 0.610 / 1.0004, 0.203 / 0.2784)\ncore.location = (0.0, 0.0, 0.82 + 0.203 / 2.0)\nmat = bpy.data.materials.new('IBM 5100 tan shell')\nmat.use_nodes = True\np = mat.node_tree.nodes.get('Principled BSDF')\np.inputs['Base Color'].default_value = (0.70, 0.67, 0.58, 1.0)\np.inputs['Roughness'].default_value = 0.38\ncore.data.materials.clear(); core.data.materials.append(mat)\n# The reference mesh carries the shell and controls; add the requested inserted DC300 cartridge in its horizontal bay.\ntape_mat = bpy.data.materials.new('Inserted DC300 tape')\ntape_mat.use_nodes = True\ntp = tape_mat.node_tree.nodes.get('Principled BSDF')\ntp.inputs['Base Color'].default_value = (0.07, 0.08, 0.07, 1.0); tp.inputs['Roughness'].default_value = 0.32\nbpy.ops.mesh.primitive_cube_add(size=1.0, location=(0.115, -0.313, 1.025))\ntape = bpy.context.object; tape.name = 'Inserted DC300 cartridge'; tape.dimensions = (0.125, 0.012, 0.024); tape.data.materials.append(tape_mat)\n"
+
+l:cameraFix := "cam_operator.location.y = -1.25\ncam_front.location.y = -1.35\ncam_front.data.lens = 52\ncam_keyboard.location.y = -1.05\ncam_keyboard.data.lens = 52\ncam_tape.location.y = -1.15\ncam_tape.data.lens = 52\ncam_front.constraints[0].target.location.z = 1.00\ncam_tape.constraints[0].target.location.z = 1.00\n"
+
+l:refFix := "mat = bpy.data.materials.get('IBM 5100 tan shell')\nif mat:\n    p = mat.node_tree.nodes.get('Principled BSDF')\n    p.inputs['Base Color'].default_value = (0.50, 0.43, 0.32, 1.0)\n    p.inputs['Roughness'].default_value = 0.42\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.z = 0.972\n    tape.dimensions = (0.085, 0.012, 0.030)\n"
+
+l:tapeFix := "tape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.x = 0.21\n    tape.location.y = -0.295\n"
+
+l:appearanceFix := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\ndef mat(name, color, rough=0.4, metallic=0.0):\n    m = bpy.data.materials.get(name) or bpy.data.materials.new(name)\n    m.use_nodes = True\n    p = m.node_tree.nodes.get('Principled BSDF')\n    p.inputs['Base Color'].default_value = (*color, 1.0)\n    p.inputs['Roughness'].default_value = rough\n    p.inputs['Metallic'].default_value = metallic\n    return m\nshell = mat('IBM 5100 tan shell', (0.50, 0.43, 0.32), 0.42)\nkeys = mat('IBM 5100 ivory keys', (0.72, 0.66, 0.53), 0.38)\nscreen = mat('IBM 5100 dark CRT', (0.012, 0.018, 0.016), 0.24)\ndark = mat('IBM 5100 dark controls', (0.055, 0.060, 0.052), 0.30)\nif core:\n    core.data.materials.clear()\n    for m in (shell, keys, screen, dark): core.data.materials.append(m)\n    for f in core.data.polygons:\n        c = f.center\n        idx = 0\n        if c.z < -0.075 and c.y < -0.22: idx = 1\n        if -0.235 < c.x < -0.025 and c.y < -0.38 and -0.035 < c.z < 0.075: idx = 2\n        if c.x > 0.025 and c.y < -0.38 and -0.035 < c.z < 0.075: idx = 3\n        f.material_index = idx\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.x = 0.125\n    tape.location.y = -0.305\n    tape.location.z = 0.955\n    tape.dimensions = (0.095, 0.010, 0.026)\nred = mat('IBM 5100 red power button', (0.68, 0.018, 0.012), 0.28)\nbpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=0.012, depth=0.008, location=(0.035, -0.315, 0.035), rotation=(1.5708, 0.0, 0.0))\npower = bpy.context.object\npower.name = 'Red power button'\npower.data.materials.append(red)\n"
+
+l:colorFix := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    shell = bpy.data.materials.get('IBM 5100 tan shell')\n    keys = bpy.data.materials.get('IBM 5100 ivory keys')\n    screen = bpy.data.materials.get('IBM 5100 dark CRT')\n    dark = bpy.data.materials.get('IBM 5100 dark controls')\n    for f in core.data.polygons:\n        c = f.center\n        idx = 0\n        if c.z < -0.105 and c.y < -0.24: idx = 1\n        if -0.235 < c.x < -0.025 and c.y < -0.38 and -0.105 < c.z < -0.025: idx = 2\n        if c.x > 0.025 and c.y < -0.38 and -0.105 < c.z < -0.025: idx = 3\n        f.material_index = idx\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.x = 0.125\n    tape.location.y = -0.305\n    tape.location.z = 0.890\npower = bpy.data.objects.get('Red power button')\nif power: power.location.z = 0.890\n"
+
+l:surfaceFix := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    shell = bpy.data.materials.get('IBM 5100 tan shell')\n    keys = bpy.data.materials.get('IBM 5100 ivory keys')\n    for f in core.data.polygons:\n        c = f.center\n        f.material_index = 1 if (c.z < -0.112 and c.y < -0.42 and abs(c.x) < 0.26) else 0\ndark = bpy.data.materials.get('IBM 5100 dark CRT')\nif dark:\n    bpy.ops.mesh.primitive_cube_add(size=1.0, location=(-0.125, -0.314, 0.868))\n    crt = bpy.context.object\n    crt.name = 'Dark CRT face'\n    crt.dimensions = (0.17, 0.008, 0.082)\n    crt.data.materials.append(dark)\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.x = 0.125\n    tape.location.y = -0.314\n    tape.location.z = 0.935\n    tape.dimensions = (0.085, 0.008, 0.020)\n"
+
+l:finalFix := "crt = bpy.data.objects.get('Dark CRT face')\nif crt:\n    crt.hide_render = True\n    crt.hide_viewport = True\ncore = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    for f in core.data.polygons:\n        c = f.center\n        if -0.225 < c.x < -0.035 and -0.105 < c.z < -0.025 and c.y < -0.44 and f.normal.y < -0.55:\n            f.material_index = 2\n"
+
+l:cleanVisuals := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    for f in core.data.polygons: f.material_index = 0\ndark = bpy.data.materials.get('IBM 5100 dark CRT')\nif dark:\n    bpy.ops.mesh.primitive_cube_add(size=1.0, location=(-0.125, -0.300, 0.915))\n    crt = bpy.context.object\n    crt.name = 'Recessed dark CRT'\n    crt.dimensions = (0.145, 0.004, 0.065)\n    crt.data.materials.append(dark)\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.location.x = 0.125\n    tape.location.y = -0.300\n    tape.location.z = 0.985\n    tape.dimensions = (0.080, 0.006, 0.018)\n"
+
+l:screenFix := "crt = bpy.data.objects.get('Recessed dark CRT')\nif crt:\n    crt.hide_render = True\n    crt.hide_viewport = True\ntape = bpy.data.objects.get('Inserted DC300 cartridge')\nif tape:\n    tape.hide_render = True\n    tape.hide_viewport = True\ncore = bpy.data.objects.get('IBM 5100 continuous reference shell')\nscreen = bpy.data.materials.get('IBM 5100 dark CRT')\nif core and screen:\n    for f in core.data.polygons:\n        c = f.center\n        if -0.25 < c.x < -0.015 and -0.13 < c.z < -0.01 and c.y < -0.44 and f.normal.y < -0.45:\n            f.material_index = 2\n"
+
+l:finalCleanup := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    for f in core.data.polygons: f.material_index = 0\n"
+
+l:removeHelpers := "for name in ('Inserted DC300 cartridge', 'Dark CRT face', 'Recessed dark CRT'):\n    o = bpy.data.objects.get(name)\n    if o:\n        bpy.data.objects.remove(o, do_unlink=True)\n"
+
+l:detailFix := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\ndef material(name, color, rough=0.35):\n    m = bpy.data.materials.get(name) or bpy.data.materials.new(name)\n    m.use_nodes = True\n    p = m.node_tree.nodes.get('Principled BSDF')\n    p.inputs['Base Color'].default_value = (*color, 1.0)\n    p.inputs['Roughness'].default_value = rough\n    return m\nshell = material('IBM 5100 tan shell', (0.50, 0.43, 0.32), 0.42)\nkeys = material('IBM 5100 white key caps', (0.88, 0.86, 0.78), 0.32)\nscreen = material('IBM 5100 black CRT glass', (0.008, 0.012, 0.010), 0.20)\nif core:\n    core.data.materials.clear()\n    core.data.materials.append(shell); core.data.materials.append(keys); core.data.materials.append(screen)\n    for f in core.data.polygons:\n        c = f.center\n        f.material_index = 0\n        if c.z < -0.10 and c.y < -0.25 and f.normal.z > 0.5: f.material_index = 1\n        if -0.24 < c.x < -0.025 and c.y < -0.46 and -0.11 < c.z < -0.015 and f.normal.y < -0.45: f.material_index = 2\ngray = material('IBM 5100 gray tape cover', (0.30, 0.31, 0.29), 0.34)\nred = material('IBM 5100 red selector switch', (0.62, 0.015, 0.010), 0.28)\ndef cube(name, loc, dims, mat):\n    bpy.ops.mesh.primitive_cube_add(size=1.0, location=loc)\n    o = bpy.context.object; o.name = name; o.scale = (dims[0] / 2.0, dims[1] / 2.0, dims[2] / 2.0); o.data.materials.append(mat)\n    return o\ncube('Gray inserted tape cover', (0.135, -0.304, 0.945), (0.090, 0.008, 0.018), gray)\ncube('Red APL BASIC selector', (0.005, -0.311, 0.925), (0.022, 0.008, 0.012), red)\n"
+
+l:removeOldSwitch := "o = bpy.data.objects.get('Red power button')\nif o: bpy.data.objects.remove(o, do_unlink=True)\n"
+
+l:finalDetail := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nkeys = bpy.data.materials.get('IBM 5100 white key caps')\nscreen = bpy.data.materials.get('IBM 5100 black CRT glass')\nif core:\n    for f in core.data.polygons:\n        c = f.center\n        f.material_index = 1 if (keys and c.z < -0.10 and c.y < -0.25 and f.normal.z > 0.5) else 0\nif screen:\n    bpy.ops.mesh.primitive_cube_add(size=1.0, location=(-0.125, -0.304, 0.970))\n    crt = bpy.context.object; crt.name = 'CRT dark glass panel'; crt.scale = (0.075, 0.002, 0.040); crt.data.materials.append(screen)\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape: tape.location.z = 0.995\nswitch = bpy.data.objects.get('Red APL BASIC selector')\nif switch: switch.location.x = 0.005; switch.location.z = 0.975\n"
+
+l:detailPlacement := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt: crt.location = (-0.06, -0.24, 0.970)\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape: tape.location = (0.20, -0.24, 0.995)\nswitch = bpy.data.objects.get('Red APL BASIC selector')\nif switch: switch.location = (0.04, -0.24, 0.975)\n"
+
+l:alignmentFix := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt: crt.location = (-0.11, -0.24, 0.982)\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape: tape.location = (0.14, -0.24, 0.995)\n"
+
+l:alignmentFinal := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt:\n    crt.location = (-0.08, -0.24, 0.982)\n    crt.scale.x = 0.10\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape:\n    tape.location = (0.16, -0.24, 0.995)\n    tape.scale.x = 0.065\n"
+
+l:depthFix := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt: crt.location.y = -0.307\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape: tape.location.y = -0.307\nswitch = bpy.data.objects.get('Red APL BASIC selector')\nif switch: switch.location.y = -0.307\n"
+
+l:obliqueFix := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt:\n    crt.location = (-0.11, -0.307, 0.960)\n    crt.scale.x = 0.09\ntape = bpy.data.objects.get('Gray inserted tape cover')\nif tape:\n    tape.location = (0.13, -0.307, 0.965)\n    tape.scale.x = 0.045\nswitch = bpy.data.objects.get('Red APL BASIC selector')\nif switch: switch.location = (-0.02, -0.307, 0.990)\n"
+
+l:crtFrameFix := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt:\n    crt.location = (-0.13, -0.307, 1.000)\n    crt.scale.x = 0.12\n    crt.scale.z = 0.070\n"
+
+l:crtFinalFix := "crt = bpy.data.objects.get('CRT dark glass panel')\nif crt:\n    crt.location.x = -0.11\n    crt.scale.x = 0.070\n"
+
+l:meshFinish := "for name in ('CRT dark glass panel', 'Gray inserted tape cover', 'Red APL BASIC selector'):\n    o = bpy.data.objects.get(name)\n    if o: bpy.data.objects.remove(o, do_unlink=True)\ncore = bpy.data.objects.get('IBM 5100 continuous reference shell')\ndef finishMat(name, color, rough=0.35):\n    m = bpy.data.materials.get(name) or bpy.data.materials.new(name)\n    m.use_nodes = True\n    p = m.node_tree.nodes.get('Principled BSDF')\n    p.inputs['Base Color'].default_value = (*color, 1.0); p.inputs['Roughness'].default_value = rough\n    return m\nif core:\n    shell = finishMat('IBM 5100 tan finished shell', (0.50, 0.43, 0.32), 0.42)\n    keys = finishMat('IBM 5100 white finished keys', (0.88, 0.86, 0.78), 0.32)\n    crt = finishMat('IBM 5100 black finished CRT', (0.008, 0.012, 0.010), 0.20)\n    gray = finishMat('IBM 5100 gray finished tape', (0.30, 0.31, 0.29), 0.34)\n    red = finishMat('IBM 5100 red finished selector', (0.62, 0.015, 0.010), 0.28)\n    core.data.materials.clear()\n    for m in (shell, keys, crt, gray, red): core.data.materials.append(m)\n    for f in core.data.polygons:\n        c = f.center; idx = 0\n        if c.z < -0.10 and c.y < -0.25 and f.normal.z > 0.5: idx = 1\n        if -0.26 < c.x < -0.02 and c.y < -0.48 and -0.13 < c.z < -0.04 and f.normal.y < -0.7: idx = 2\n        if 0.08 < c.x < 0.25 and c.y < -0.48 and -0.10 < c.z < -0.04 and f.normal.y < -0.5: idx = 3\n        if -0.04 < c.x < 0.035 and c.y < -0.48 and -0.10 < c.z < -0.04 and f.normal.y < -0.5: idx = 4\n        f.material_index = idx\n"
+
+l:parentedDetails := "for name in ('CRT dark glass panel', 'Gray inserted tape cover', 'Red APL BASIC selector'):\n    o = bpy.data.objects.get(name)\n    if o: bpy.data.objects.remove(o, do_unlink=True)\ncore = bpy.data.objects.get('IBM 5100 continuous reference shell')\ndef pm(name, color, rough=0.35):\n    m = bpy.data.materials.get(name) or bpy.data.materials.new(name); m.use_nodes = True\n    p = m.node_tree.nodes.get('Principled BSDF'); p.inputs['Base Color'].default_value = (*color, 1.0); p.inputs['Roughness'].default_value = rough\n    return m\nif core:\n    shell = pm('IBM 5100 parented tan shell', (0.50, 0.43, 0.32), 0.42)\n    core.data.materials.clear(); core.data.materials.append(shell)\n    screen = pm('IBM 5100 parented black CRT', (0.008, 0.012, 0.010), 0.20)\n    gray = pm('IBM 5100 parented gray tape', (0.30, 0.31, 0.29), 0.34)\n    red = pm('IBM 5100 parented red selector', (0.62, 0.015, 0.010), 0.28)\n    def child_cube(name, loc, half, material):\n        bpy.ops.mesh.primitive_cube_add(size=1.0)\n        o = bpy.context.object; o.name = name; o.parent = core; o.location = loc; o.scale = half; o.data.materials.append(material); return o\n    child_cube('Parented CRT glass', (-0.14, -0.505, -0.080), (0.14, 0.004, 0.045), screen)\n    child_cube('Parented gray tape cover', (0.15, -0.505, -0.055), (0.060, 0.004, 0.012), gray)\n    child_cube('Parented red selector', (0.005, -0.505, -0.050), (0.012, 0.004, 0.008), red)\n"
+
+l:stableClean := "for name in ('CRT dark glass panel', 'Gray inserted tape cover', 'Red APL BASIC selector', 'Parented CRT glass', 'Parented gray tape cover', 'Parented red selector'):\n    o = bpy.data.objects.get(name)\n    if o: bpy.data.objects.remove(o, do_unlink=True)\ncore = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    shell = bpy.data.materials.get('IBM 5100 tan shell') or bpy.data.materials.new('IBM 5100 stable tan shell')\n    shell.use_nodes = True\n    p = shell.node_tree.nodes.get('Principled BSDF'); p.inputs['Base Color'].default_value = (0.50, 0.43, 0.32, 1.0); p.inputs['Roughness'].default_value = 0.42\n    core.data.materials.clear(); core.data.materials.append(shell)\n    for f in core.data.polygons: f.material_index = 0\n"
+
+l:redOnly := "red = bpy.data.materials.get('IBM 5100 isolated red selector') or bpy.data.materials.new('IBM 5100 isolated red selector')\nred.use_nodes = True\np = red.node_tree.nodes.get('Principled BSDF'); p.inputs['Base Color'].default_value = (0.62, 0.015, 0.010, 1.0); p.inputs['Roughness'].default_value = 0.28\nbpy.ops.mesh.primitive_cube_add(size=1.0, location=(-0.015, -0.309, 0.940))\nswitch = bpy.context.object; switch.name = 'Isolated red selector'; switch.scale = (0.011, 0.004, 0.006); switch.data.materials.append(red)\n"
+
+l:redPlacement1 := "switch = bpy.data.objects.get('Isolated red selector')\nif switch: switch.location.z = 0.995\n"
+
+l:redTestCleanup := "o = bpy.data.objects.get('Isolated red selector')\nif o: bpy.data.objects.remove(o, do_unlink=True)\n"
+
+l:s_cene := { z ->
+  t := bp:head
+  t := t c_at (l:r_oom 0)
+  t := t c_at l:importRef
+  t := t c_at l:refFix
+  t := t c_at l:tapeFix
+  t := t c_at l:appearanceFix
+  t := t c_at l:colorFix
+  t := t c_at l:surfaceFix
+  t := t c_at l:finalFix
+  t := t c_at l:cleanVisuals
+  t := t c_at l:screenFix
+  t := t c_at l:finalCleanup
+  t := t c_at l:removeHelpers
+  t := t c_at l:detailFix
+  t := t c_at l:removeOldSwitch
+  t := t c_at l:finalDetail
+  t := t c_at l:detailPlacement
+  t := t c_at l:alignmentFix
+  t := t c_at l:alignmentFinal
+  t := t c_at l:depthFix
+  t := t c_at l:obliqueFix
+  t := t c_at l:crtFrameFix
+  t := t c_at l:crtFinalFix
+  t := t c_at l:meshFinish
+  t := t c_at l:parentedDetails
+  t := t c_at l:stableClean
+  t := t c_at l:redOnly
+  t := t c_at l:redPlacement1
+  t := t c_at l:redTestCleanup
+  t := t c_at ((0.98 0.98 0.98, 0.8) bp:l_ights 0)
+  t := t c_at ((1280, 720, 32) bp:s_etup 0)
+  t := t c_at (bp:s_amples 32)
+  t := t c_at l:pbr
+  t := t c_at l:cameras
+  t := t c_at l:cameraFix
+  t := t c_at (bp:e_xports "ibm5100")
+  t c_at bp:report
+}
+

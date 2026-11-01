@@ -1,0 +1,7 @@
+# Generated Blender/X_eTaL output
+work/
+
+# Local comparison and capture artifacts
+.DS_Store
+*.blend1
+

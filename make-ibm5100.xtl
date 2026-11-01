@@ -1,0 +1,7 @@
+## Driver kept separate so `just render` has the same shape as s1130-3D.
+"bl:" u_se< "Blender"
+"bp:" u_se< "Bpy"
+"bm:" u_se< "Ibm5100"
+
+n := "work/ibm5100/run.py" bl:w_rite! bp:launcher
+n := "work/ibm5100/scene.py" bl:w_rite! (bm:s_cene 0)
