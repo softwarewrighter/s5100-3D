@@ -133,11 +133,11 @@ l:r_oom := { z ->
   t := t c_at (("white floor", 0.0 0.0 0.0, 2.8 2.5 0.04, flat, co:floor, 0.0) bp:b_ox 0)
   t := t c_at (("white back wall", 0.0 1.2 1.25, 2.8 0.04 2.5, flat, co:wall, 0.0) bp:b_ox 0)
   # plain four-legged table
-  t := t c_at (("table top", 0.0 0.0 0.82, 1.10 0.75 0.065, flat, co:tableWood, 0.0) bp:b_ox 0)
-  t := t c_at (("table leg front left", -0.46 -0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
-  t := t c_at (("table leg front right", 0.46 -0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
-  t := t c_at (("table leg rear left", -0.46 0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
-  t c_at (("table leg rear right", 0.46 0.28 0.40, 0.065 0.065 0.78, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table top", 0.0 0.0 0.785, 1.10 0.75 0.065, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg front left", -0.46 -0.28 0.375, 0.065 0.065 0.750, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg front right", 0.46 -0.28 0.375, 0.065 0.065 0.750, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t := t c_at (("table leg rear left", -0.46 0.28 0.375, 0.065 0.065 0.750, flat, co:tableWood, 0.0) bp:b_ox 0)
+  t c_at (("table leg rear right", 0.46 0.28 0.375, 0.065 0.065 0.750, flat, co:tableWood, 0.0) bp:b_ox 0)
 }
 
 l:pbr := "for m in bpy.data.materials:\n    if not m.use_nodes: continue\n    p = m.node_tree.nodes.get('Principled BSDF')\n    if not p: continue\n    n = m.name.lower()\n    if 'screen' in n or 'phosphor' in n: p.inputs['Roughness'].default_value = 0.18\n    elif 'metal' in n or 'hub' in n or 'switch' in n: p.inputs['Metallic'].default_value = 0.80; p.inputs['Roughness'].default_value = 0.22\n    elif 'table' in n: p.inputs['Roughness'].default_value = 0.42\n    elif 'beige' in n or 'fascia' in n or 'keyboard' in n: p.inputs['Roughness'].default_value = 0.38\n\nfor o in list(bpy.context.scene.objects):\n    if o.type != 'MESH': continue\n    b = o.modifiers.new('molded edge bevel', 'BEVEL')\n    b.width = 0.0035 if 'key' not in o.name.lower() else 0.0015\n    b.segments = 3\n    b.limit_method = 'ANGLE'\n"
@@ -200,6 +200,16 @@ l:redPlacement1 := "switch = bpy.data.objects.get('Isolated red selector')\nif s
 
 l:redTestCleanup := "o = bpy.data.objects.get('Isolated red selector')\nif o: bpy.data.objects.remove(o, do_unlink=True)\n"
 
+l:redLocalTest := "# Red selector experiment rolled back after front/oblique validation.\n"
+l:tapeLocalTest := "# Floating tape helper removed; bay-conforming replacement is pending landmark extraction.\n"
+l:sourceTape := "# Source loose-component extraction is staged only; current production remains clean after Blender crash during promotion.\n"
+l:manualDetails := "# Hand-built-model anchors intentionally disabled for the Trellis shell.\n"
+l:exportFix := "bpy.context.view_layer.update()\nfor name in ('Local red selector test', 'Local gray inserted tape'):\n    o = bpy.data.objects.get(name)\n    if not o: continue\n    bpy.context.view_layer.update()\n    world = o.matrix_world.copy()\n    bpy.ops.object.select_all(action='DESELECT')\n    o.parent = None\n    o.matrix_world = world\n    bpy.context.view_layer.objects.active = o\n    o.select_set(True)\n    bpy.context.view_layer.update()\n    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)\n"
+
+l:simplifyTest := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core:\n    dec = core.modifiers.new('controlled reference simplification', 'DECIMATE')\n    dec.decimate_type = 'COLLAPSE'\n    dec.ratio = 0.45\n    dec.use_collapse_triangulate = True\n"
+
+l:simplifyRatio80 := "core = bpy.data.objects.get('IBM 5100 continuous reference shell')\nif core and core.modifiers.get('controlled reference simplification'):\n    core.modifiers['controlled reference simplification'].ratio = 0.80\n"
+
 l:s_cene := { z ->
   t := bp:head
   t := t c_at (l:r_oom 0)
@@ -230,6 +240,13 @@ l:s_cene := { z ->
   t := t c_at l:redOnly
   t := t c_at l:redPlacement1
   t := t c_at l:redTestCleanup
+  t := t c_at l:redLocalTest
+  t := t c_at l:tapeLocalTest
+  t := t c_at l:sourceTape
+  t := t c_at l:manualDetails
+  t := t c_at l:exportFix
+  t := t c_at l:simplifyTest
+  t := t c_at l:simplifyRatio80
   t := t c_at ((0.98 0.98 0.98, 0.8) bp:l_ights 0)
   t := t c_at ((1280, 720, 32) bp:s_etup 0)
   t := t c_at (bp:s_amples 32)

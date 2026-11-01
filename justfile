@@ -17,6 +17,12 @@ render:
     @cp web/index.html work/ibm5100/out/index.html
     @node scripts/make-open-glb.js work/ibm5100/out/ibm5100.glb work/ibm5100/out/ibm5100-open.glb
 
+segment:
+    "{{blender_bin}}" --background --factory-startup --python scripts/segment_trellis5100.py -- references/trellis5100-reference.glb work/ibm5100/parts
+
+coordinate-debug:
+    "{{blender_bin}}" --background --factory-startup --python scripts/render_coordinate_debug.py -- work/ibm5100/parts/crt-refined-candidate.blend work/ibm5100/parts "refined CRT glass"
+
 serve:
     @if [ -f "work/ibm5100/out/index.html" ]; then python3 -m http.server {{port}} --directory work/ibm5100/out; else echo "Run 'just render' first."; exit 1; fi
 
