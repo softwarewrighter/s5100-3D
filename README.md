@@ -29,7 +29,7 @@ Viewer controls:
 ```text
 W/S                 zoom
 A/D or Left/Right   horizontal orbit
-Up/Down             camera target up/down
+Up/Down             orbit elevation up/down
 I/K                 vertical pan
 Space               pause/resume rotation
 R                   reset
@@ -45,7 +45,7 @@ Blender (x, y, z) -> model-viewer (x, z, -y)
 
 Each improvement should change one measurable feature, match a reference camera, render a front and oblique view, inspect the exported GLB, and keep the change only if it remains attached under rotation. The full procedure is documented in [docs/less-wrong.md](docs/less-wrong.md).
 
-The reusable Codex skill is named `less-wrong-3d` and is installed at `/Users/mike/.codex/skills/less-wrong-3d/SKILL.md`. It is installed Codex configuration, not repository source.
+The reusable skill is versioned in `../lucy-3D/skills/less-wrong-3d/SKILL.md` and shared by all three modeling repositories.
 
 ## Source files
 
@@ -90,6 +90,13 @@ To serve already-built output without rebuilding:
 just serve
 ```
 
+If your normal browser reports `Error creating WebGL context`, keep the server
+running and use `just view-software`. This opens Chromium in a separate temporary
+profile with SwiftShader software WebGL. It leaves your normal browser profile
+unchanged. This mode is intended for the trusted local demo and may render more
+slowly than working hardware acceleration. The page itself cannot change the
+browser's graphics backend.
+
 ### Generated output
 
 `work/` is generated and ignored by Git. Its main outputs are:
@@ -116,3 +123,17 @@ Copyright (c) 2026 Michael A. Wright. See [COPYRIGHT](COPYRIGHT).
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
+## Shared Linux/Mac workflow
+
+The shared controls, portable Blender runner, and versioned refinement skill live in
+[`../lucy-3D`](../lucy-3D). Run `just viewer` to regenerate an existing output's
+inspection page, or `just render` for a full build. `BLENDER_BIN` defaults to
+`blender`; `XETAL_EXTENSIONS_ROOT` and `XETAL_BIN` override the extensions checkout
+and executable. Missing Blender/Bpy modules produce an explicit dependency error.
+
+Common controls: W/S zoom; A/D or left/right orbit; up/down change elevation;
+I/K pan vertically; Space toggles rotation; R restores the overview and pauses
+rotation. Camera targets use glTF Y-up. Mechanical controls remain model-specific.
+The generated viewer replaces the older embedded/source-page controls described
+above. Full production builds still require the X_eTaL Blender extension libraries.

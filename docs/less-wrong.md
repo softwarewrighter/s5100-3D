@@ -107,3 +107,19 @@ After two or three targeted attempts with no improvement, stop changing coordina
 - or document the limitation instead of adding another approximate helper.
 
 The goal is not to produce a new render every cycle. The goal is to produce a visibly less-wrong model whose improvement is demonstrated from the same reference-aligned cameras.
+
+## Presentation palette (2026-11-08)
+
+User-requested presentation colors: neutral light gray table (linear RGB 0.63),
+white key tops (0.95), and dark gray inactive CRT (0.055). These are display
+choices, not historical color measurements. `scripts/presentation_colors.py`
+runs after the stable shell cleanup so earlier experimental masks cannot erase
+them. Its regions use the source mesh's local frame and existing surface normals;
+no replacement geometry is added. The keyboard is still the soft Trellis mesh.
+
+Acceptance: table RGB channels are equal and differ from the tan enclosure;
+raised key tops receive white while the surrounding deck stays tan; the inset
+CRT receives neutral dark gray while its surround stays tan. Preserve camera,
+lighting, and geometry settings for comparison. `just render` preserves previous
+output; `scripts/validate_presentation.py` adds the left oblique and checks all
+three material colors and nonempty face assignments after GLB reimport.

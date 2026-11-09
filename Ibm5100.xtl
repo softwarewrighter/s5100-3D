@@ -237,6 +237,7 @@ l:s_cene := { z ->
   t := t c_at l:meshFinish
   t := t c_at l:parentedDetails
   t := t c_at l:stableClean
+  t := t c_at "exec(compile(open('scripts/presentation_colors.py').read(), 'scripts/presentation_colors.py', 'exec'))\n"
   t := t c_at l:redOnly
   t := t c_at l:redPlacement1
   t := t c_at l:redTestCleanup
