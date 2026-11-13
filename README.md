@@ -137,3 +137,47 @@ I/K pan vertically; Space toggles rotation; R restores the overview and pauses
 rotation. Camera targets use glTF Y-up. Mechanical controls remain model-specific.
 The generated viewer replaces the older embedded/source-page controls described
 above. Full production builds still require the X_eTaL Blender extension libraries.
+
+## Clean procedural 5100 preview
+
+The new preview rebuilds the enclosure, keycaps, CRT, controls, and tape recess
+as clean geometry. The Trellis mesh is retained only in the previous preview.
+The new GLB contains the hardware; the studio tabletop is render-only.
+
+```sh
+just render-clean-gpu  # OptiX; use just render-clean for CPU
+just serve            # index on 0.0.0.0:5100
+```
+
+The top-level index links the model versions and comparison evidence:
+
+- `/clean/` — new procedural reconstruction, interactive model and eight renders;
+- `/previous/` — preserved Trellis-based preview;
+- `/comparisons/` — frozen-camera photo comparison evidence.
+
+From another LAN device, use `http://<server-LAN-address>:5100/`. The current
+server address can be found with `ip -4 route get 1.1.1.1` on Linux. `0.0.0.0`
+is the bind address; use the server's actual LAN address in a browser.
+
+`just preview-index` refreshes the index without rebuilding. `just view-software`
+opens that index in the isolated Chromium software-WebGL window. Safari on the
+Mac can use the same served files without Linux launch flags.
+
+The clean model is a photo-led APL/BASIC exterior study with a 443 × 610 × 200 mm
+envelope constraint. Fine APL legends, exact key spacing, molding radii, rear
+fittings, and vent spacing remain provisional. See
+[reference provenance](references/ibm5100-front-provenance.md). The original
+print artwork is committed under `textures/`; regenerate it with
+`just legends-clean` (requires `uv`, which installs Pillow in its script environment).
+
+Photo-based refinement now has a separate `/comparisons/` page with three
+camera-matched original/before/revised views and opacity overlays. See
+[photo-refinement evidence and remaining deviations](docs/photo-refinement.md).
+The frozen cameras are in `models/photo-cameras.json`; the supplied Trellis mesh
+is excluded from fitting and correction measurements.
+
+The clean preview checks WebGL before loading the renderer and switches to
+Blender renders if initialization fails. `/clean/?renders=1` bypasses WebGL
+entirely; the view buttons select rendered images. `just view-software` uses
+explicit ANGLE/SwiftShader flags in a fresh Chromium profile for interactive
+inspection on Linux hosts with a broken normal-browser graphics context.

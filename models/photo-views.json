@@ -1,0 +1,19 @@
+{
+  "coordinate_system": "meters, Blender Z-up, front -Y",
+  "notes": "Hand-selected exterior landmarks at 1200 px photo width; approximate edge placement, not metrology. Cameras fitted to cabinet only; interior features withheld for validation.",
+  "landmarks": {
+    "front_top_left": [-0.2215,-0.107,0.200],
+    "front_top_right": [0.2215,-0.107,0.200],
+    "front_lip_left": [-0.2215,-0.305,0.040],
+    "front_lip_right": [0.2215,-0.305,0.040],
+    "fascia_bottom_left": [-0.210,-0.123,0.079],
+    "fascia_bottom_right": [0.210,-0.123,0.079],
+    "rear_top_left": [-0.2215,0.291,0.200],
+    "rear_top_right": [0.2215,0.291,0.200]
+  },
+  "views": [
+    {"id":"snuci","photo":"references/ibm5100-front.jpg","page":"https://commons.wikimedia.org/wiki/File:IBM_5100_(1).jpg","credit":"Snuci, CC0","size":[1200,900],"points":{"front_top_left":[174,302],"front_top_right":[1039,296],"front_lip_left":[146,741],"front_lip_right":[1060,734],"fascia_bottom_left":[184,488],"fascia_bottom_right":[1018,478]},"initial_azimuth":0,"initial_elevation":0.65},
+    {"id":"enter","photo":"work/reference-research/enter-front.jpg","page":"https://commons.wikimedia.org/wiki/File:IBM-5100--Museum-Enter-6094758.jpg","credit":"Bobo11, CC BY-SA 3.0","size":[1200,900],"points":{"front_top_left":[384,489],"front_top_right":[886,458],"front_lip_left":[448,769],"front_lip_right":[990,708],"fascia_bottom_left":[394,658],"fascia_bottom_right":[902,597],"rear_top_left":[202,396],"rear_top_right":[614,376]},"initial_azimuth":-0.5,"initial_elevation":0.40},
+    {"id":"bern","photo":"work/reference-research/bern.jpg","page":"https://commons.wikimedia.org/wiki/File:IBM_5100_-_MfK_Bern.jpg","credit":"Sandstein, CC BY-SA 3.0; German layout","size":[1200,879],"points":{"front_top_left":[72,273],"front_top_right":[1088,276],"front_lip_left":[48,795],"front_lip_right":[1152,790],"fascia_bottom_left":[101,489],"fascia_bottom_right":[1065,482],"rear_top_left":[292,30],"rear_top_right":[872,31]},"initial_azimuth":0,"initial_elevation":0.60}
+  ]
+}

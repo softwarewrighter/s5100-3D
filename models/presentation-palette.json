@@ -1,0 +1,23 @@
+{
+  "description": "Photo-led relative color separation, not calibrated historical paint samples. Linear RGB for Blender; sRGB bytes for printed panel backgrounds.",
+  "cover_linear": [
+    0.29,
+    0.31,
+    0.285
+  ],
+  "keyboard_surround_linear": [
+    0.57,
+    0.565,
+    0.49
+  ],
+  "front_panel_linear": [
+    0.5,
+    0.39,
+    0.2
+  ],
+  "front_panel_srgb": [
+    188,
+    168,
+    124
+  ]
+}

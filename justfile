@@ -14,6 +14,19 @@ default:
 render:
     python3 ../lucy-3D/scripts/build_model.py 5100 --repo .
 
+# Clean procedural reconstruction, separate from the previous Trellis scene.
+render-clean:
+    python3 scripts/build_clean_5100.py
+
+render-clean-gpu:
+    python3 scripts/build_clean_5100.py --device OPTIX
+
+legends-clean:
+    uv run scripts/make_5100_legends.py
+
+preview-index:
+    python3 scripts/make_preview_index.py
+
 # Rebuild just the inspection page after changing shared controls.
 viewer:
     python3 ../lucy-3D/scripts/make_viewer.py 5100 work/ibm5100/out
@@ -28,7 +41,8 @@ coordinate-debug:
     "{{blender_bin}}" --background --factory-startup --python scripts/render_coordinate_debug.py -- work/ibm5100/parts/crt-refined-candidate.blend work/ibm5100/parts "refined CRT glass"
 
 serve:
-    @if [ -f "work/ibm5100/out/index.html" ]; then python3 -m http.server {{port}} --directory work/ibm5100/out; else echo "Run 'just render' first."; exit 1; fi
+    python3 scripts/make_preview_index.py
+    python3 -m http.server {{port}} --bind 0.0.0.0 --directory work/preview
 
 view:
     @if command -v open >/dev/null 2>&1; then open http://127.0.0.1:{{port}}/; else echo "Viewer: http://127.0.0.1:{{port}}/"; fi
@@ -41,10 +55,11 @@ view-software:
     if [ -z "$browser" ]; then echo "Chromium or Google Chrome is required." >&2; exit 1; fi
     profile="$(mktemp -d /tmp/ibm5100-viewer.XXXXXX)"
     echo "Opening the 5100 with software WebGL; temporary profile: $profile"
-    exec "$browser" --user-data-dir="$profile" --no-first-run --no-default-browser-check --use-angle=swiftshader --enable-unsafe-swiftshader http://127.0.0.1:{{port}}/
+    exec "$browser" --user-data-dir="$profile" --no-first-run --no-default-browser-check --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader http://127.0.0.1:{{port}}/
 
 view-serve:
-    @if [ -f "work/ibm5100/out/index.html" ]; then (sleep 1; if command -v open >/dev/null 2>&1; then open http://127.0.0.1:{{port}}/; fi) >/dev/null 2>&1 & python3 -m http.server {{port}} --directory work/ibm5100/out; else echo "Run 'just render' first."; exit 1; fi
+    python3 scripts/make_preview_index.py
+    @if [ -f "work/preview/index.html" ]; then (sleep 1; if command -v open >/dev/null 2>&1; then open http://127.0.0.1:{{port}}/; fi) >/dev/null 2>&1 & python3 -m http.server {{port}} --bind 0.0.0.0 --directory work/preview; else echo "Run 'just render-clean' first."; exit 1; fi
 
 clean:
     rm -rf work

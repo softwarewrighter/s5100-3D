@@ -123,3 +123,29 @@ CRT receives neutral dark gray while its surround stays tan. Preserve camera,
 lighting, and geometry settings for comparison. `just render` preserves previous
 output; `scripts/validate_presentation.py` adds the left oblique and checks all
 three material colors and nonempty face assignments after GLB reimport.
+
+## Clean procedural reconstruction (2026-11-10)
+
+The old presentation exposed the reconstruction mesh as finished hardware,
+removed its texture materials, and outlined its surface artifacts with Freestyle.
+The new `scripts/ibm5100_clean_scene.py` constructs the 5100 independently:
+continuous beveled enclosure with Boolean CRT/tape recesses, a smooth curved CRT,
+71 individual tapered/dished keycaps, operator controls, and original print atlases.
+Parts are batched by material only after their deliberate edge treatments are
+applied. Geometry, not coordinate masks on Trellis triangles, defines color edges.
+
+Acceptance: straight enclosure edges; an unbroken smooth CRT outline; discrete
+keycaps with no white paint on the deck; no screen/tape helpers floating outside
+the body; intact part relationships from front, left, right, and top; hardware-only
+GLB export with matching semantic identities and bounds after independent import.
+The envelope follows the Museums Victoria 443 × 610 × 200 mm record, within the
+small added feet, seams, and badges. Photo and configuration evidence is recorded
+in `references/ibm5100-front-provenance.md`. Hidden details remain provisional.
+
+A CPU baseline completed six Cycles renders and passed round-trip validation.
+The final OptiX presentation uses 48 samples, AgX, broad studio lights, no
+Freestyle, and a render-only neutral gray tabletop. Inspected corresponding front
+and both oblique views, top, and detail. The preview index preserves both models.
+A real Chromium check loaded the model through the LAN address, exercised shared
+zoom/pan/reset and side/top presets, checked mobile overflow, and found no severe
+console errors. These establish a reviewable reconstruction, not measured fidelity.

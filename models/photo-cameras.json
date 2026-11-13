@@ -1,0 +1,461 @@
+{
+  "source": "models/photo-views.json",
+  "camera_policy": "Fixed after baseline alignment; no refitting between geometry candidates",
+  "views": [
+    {
+      "id": "snuci",
+      "photo": "references/ibm5100-front.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:IBM_5100_(1).jpg",
+      "credit": "Snuci, CC0",
+      "size": [
+        1200,
+        900
+      ],
+      "points": {
+        "front_top_left": [
+          174,
+          302
+        ],
+        "front_top_right": [
+          1039,
+          296
+        ],
+        "front_lip_left": [
+          146,
+          741
+        ],
+        "front_lip_right": [
+          1060,
+          734
+        ],
+        "fascia_bottom_left": [
+          184,
+          488
+        ],
+        "fascia_bottom_right": [
+          1018,
+          478
+        ]
+      },
+      "initial_azimuth": 0,
+      "initial_elevation": 0.65,
+      "parameters": [
+        0.005634692706966234,
+        0.47461277541588487,
+        -0.009136255142109516,
+        0.001996603015663662,
+        -0.048704455855292796,
+        3.0358464892298973,
+        8.644407575258766
+      ],
+      "camera_location": [
+        0.012899155258779892,
+        -2.7225125295084838,
+        1.444060696202438
+      ],
+      "camera_rotation_matrix": [
+        [
+          0.99996591613269,
+          0.006561083020969617,
+          0.005011862179075027
+        ],
+        [
+          0.0014593377884955761,
+          0.45701920871440677,
+          -0.8894556274482031
+        ],
+        [
+          -0.008126309502422813,
+          0.8894326253604876,
+          0.4569940568959528
+        ]
+      ],
+      "lens_mm": 170.34906884079356,
+      "cabinet_landmark_rms_px": 13.376069490471382,
+      "fit_points": {
+        "front_top_left": {
+          "photo": [
+            174,
+            302
+          ],
+          "projected": [
+            167.73899872230572,
+            278.84544499708124
+          ]
+        },
+        "front_top_right": {
+          "photo": [
+            1039,
+            296
+          ],
+          "projected": [
+            1036.6262039561943,
+            273.01091898565835
+          ]
+        },
+        "front_lip_left": {
+          "photo": [
+            146,
+            741
+          ],
+          "projected": [
+            153.85557454455682,
+            745.810135799954
+          ]
+        },
+        "front_lip_right": {
+          "photo": [
+            1060,
+            734
+          ],
+          "projected": [
+            1054.7967820488275,
+            740.1317847607377
+          ]
+        },
+        "fascia_bottom_left": {
+          "photo": [
+            184,
+            488
+          ],
+          "projected": [
+            197.86229822193167,
+            503.2912601363251
+          ]
+        },
+        "fascia_bottom_right": {
+          "photo": [
+            1018,
+            478
+          ],
+          "projected": [
+            1010.1175176797974,
+            497.9981328359838
+          ]
+        }
+      }
+    },
+    {
+      "id": "enter",
+      "photo": "work/reference-research/enter-front.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:IBM-5100--Museum-Enter-6094758.jpg",
+      "credit": "Bobo11, CC BY-SA 3.0",
+      "size": [
+        1200,
+        900
+      ],
+      "points": {
+        "front_top_left": [
+          384,
+          489
+        ],
+        "front_top_right": [
+          886,
+          458
+        ],
+        "front_lip_left": [
+          448,
+          769
+        ],
+        "front_lip_right": [
+          990,
+          708
+        ],
+        "fascia_bottom_left": [
+          394,
+          658
+        ],
+        "fascia_bottom_right": [
+          902,
+          597
+        ],
+        "rear_top_left": [
+          202,
+          396
+        ],
+        "rear_top_right": [
+          614,
+          376
+        ]
+      },
+      "initial_azimuth": -0.5,
+      "initial_elevation": 0.4,
+      "parameters": [
+        -0.47684693996008043,
+        0.19147177791426057,
+        0.03656597250005868,
+        -0.02529620442643508,
+        0.09398304098187026,
+        2.2146767623132346,
+        7.903969359389069
+      ],
+      "camera_location": [
+        -0.9702253862750847,
+        -1.925653825999464,
+        0.6145735260599822
+      ],
+      "camera_rotation_matrix": [
+        [
+          0.8910458076159942,
+          0.05480768818448156,
+          -0.45059237237866473
+        ],
+        [
+          -0.45249231532968776,
+          0.18574120759467513,
+          -0.8722103578660655
+        ],
+        [
+          0.035889738053364324,
+          0.9810689685833226,
+          0.19030398205323096
+        ]
+      ],
+      "lens_mm": 81.24030264855855,
+      "cabinet_landmark_rms_px": 15.390335470884795,
+      "fit_points": {
+        "front_top_left": {
+          "photo": [
+            384,
+            489
+          ],
+          "projected": [
+            369.21934173464604,
+            487.7162803950808
+          ]
+        },
+        "front_top_right": {
+          "photo": [
+            886,
+            458
+          ],
+          "projected": [
+            875.552036300171,
+            454.43998509715215
+          ]
+        },
+        "front_lip_left": {
+          "photo": [
+            448,
+            769
+          ],
+          "projected": [
+            473.63532400239336,
+            772.6413795590909
+          ]
+        },
+        "front_lip_right": {
+          "photo": [
+            990,
+            708
+          ],
+          "projected": [
+            1004.8154235861281,
+            709.4564501767597
+          ]
+        },
+        "fascia_bottom_left": {
+          "photo": [
+            394,
+            658
+          ],
+          "projected": [
+            388.49976498514485,
+            649.9906252970809
+          ]
+        },
+        "fascia_bottom_right": {
+          "photo": [
+            902,
+            597
+          ],
+          "projected": [
+            866.0438796380098,
+            604.5764920505837
+          ]
+        },
+        "rear_top_left": {
+          "photo": [
+            202,
+            396
+          ],
+          "projected": [
+            195.7564529770391,
+            396.9443948496604
+          ]
+        },
+        "rear_top_right": {
+          "photo": [
+            614,
+            376
+          ],
+          "projected": [
+            646.7230713566944,
+            375.30702707101784
+          ]
+        }
+      }
+    },
+    {
+      "id": "bern",
+      "photo": "work/reference-research/bern.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:IBM_5100_-_MfK_Bern.jpg",
+      "credit": "Sandstein, CC BY-SA 3.0; German layout",
+      "size": [
+        1200,
+        879
+      ],
+      "points": {
+        "front_top_left": [
+          72,
+          273
+        ],
+        "front_top_right": [
+          1088,
+          276
+        ],
+        "front_lip_left": [
+          48,
+          795
+        ],
+        "front_lip_right": [
+          1152,
+          790
+        ],
+        "fascia_bottom_left": [
+          101,
+          489
+        ],
+        "fascia_bottom_right": [
+          1065,
+          482
+        ],
+        "rear_top_left": [
+          292,
+          30
+        ],
+        "rear_top_right": [
+          872,
+          31
+        ]
+      },
+      "initial_azimuth": 0,
+      "initial_elevation": 0.6,
+      "parameters": [
+        -0.024920785796719316,
+        0.47929152133056835,
+        0.0067025308002801685,
+        -0.0074907838703972916,
+        -0.04942993640528433,
+        0.8696249754706985,
+        7.378537752243405
+      ],
+      "camera_location": [
+        -0.011975738271207379,
+        -0.7943564725828867,
+        0.45721338801474065
+      ],
+      "camera_rotation_matrix": [
+        [
+          0.9997440569061711,
+          0.004790389328750012,
+          -0.022110469259374304
+        ],
+        [
+          -0.021827753163205343,
+          0.46116411105171057,
+          -0.8870463414443079
+        ],
+        [
+          0.005947257572773972,
+          0.8873019299246253,
+          0.4611506427181887
+        ]
+      ],
+      "lens_mm": 48.03739907487787,
+      "cabinet_landmark_rms_px": 26.355554816106586,
+      "fit_points": {
+        "front_top_left": {
+          "photo": [
+            72,
+            273
+          ],
+          "projected": [
+            99.94669330222064,
+            245.33544347776345
+          ]
+        },
+        "front_top_right": {
+          "photo": [
+            1088,
+            276
+          ],
+          "projected": [
+            1073.4642135744202,
+            243.29555643721974
+          ]
+        },
+        "front_lip_left": {
+          "photo": [
+            48,
+            795
+          ],
+          "projected": [
+            26.722572584784302,
+            814.222639193448
+          ]
+        },
+        "front_lip_right": {
+          "photo": [
+            1152,
+            790
+          ],
+          "projected": [
+            1158.353350619635,
+            803.0320366603097
+          ]
+        },
+        "fascia_bottom_left": {
+          "photo": [
+            101,
+            489
+          ],
+          "projected": [
+            150.56220513560243,
+            495.83226966358404
+          ]
+        },
+        "fascia_bottom_right": {
+          "photo": [
+            1065,
+            482
+          ],
+          "projected": [
+            1023.6717438053461,
+            490.9993410666603
+          ]
+        },
+        "rear_top_left": {
+          "photo": [
+            292,
+            30
+          ],
+          "projected": [
+            250.98580775933186,
+            36.047419446882145
+          ]
+        },
+        "rear_top_right": {
+          "photo": [
+            872,
+            31
+          ],
+          "projected": [
+            906.8205474582643,
+            36.55703764550526
+          ]
+        }
+      }
+    }
+  ]
+}
